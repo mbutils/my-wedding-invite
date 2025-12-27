@@ -1,0 +1,35 @@
+.section {
+    min-height: 100vh;
+    position: relative;
+}
+
+.section-content {
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 560px;
+    border: 1px solid #8f8f8f;
+    border-top: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* .hero {
+    background-color: rgb(255, 255, 158);
+}
+.invitation {
+    background-color: rgb(158, 176, 255);
+}
+.story {
+    background-color: rgb(255, 158, 158);
+}
+.timeline {
+    background-color: rgb(161, 255, 158);
+}
+.album {
+    background-color: rgb(255, 202, 158);
+}
+.footer {
+    background-color: rgb(158, 236, 255);
+} */
+

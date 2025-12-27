@@ -1,0 +1,25 @@
+.font-item {
+    display: flex;
+    align-items: center;
+    line-height: 60px;
+}
+.font-item label {
+    margin-right: 20px;
+}
+.font-item p {
+    font-size: 30px;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  width: 120px;
+  height: 120px;
+  background: black;
+}
+

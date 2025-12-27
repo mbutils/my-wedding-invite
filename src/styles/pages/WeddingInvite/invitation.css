@@ -1,0 +1,38 @@
+.invitation .iv-title {
+    display: flex;
+    font-size: 25px;
+    margin-top: 10%;
+}
+
+.invitation .iv-title-desc {
+    margin-top: 22%;
+    font-size: 15px;
+}
+.invitation .iv-splitter {
+    margin-top: 16%;
+    height: 25px;
+    border-right: 1px solid #212529;
+}
+
+.invitation .iv-cdcr {
+    margin-top: 45%;
+    display: flex;
+}
+.invitation .iv-cdcr .iv-cdcr-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.invitation .iv-cdcr .iv-gr-title,
+.invitation .iv-cdcr .iv-br-title {
+    font-size: 35px;
+}
+.invitation .iv-cdcr .iv-gr-name,
+.invitation .iv-cdcr .iv-br-name {
+    font-size: 40px;
+}
+.invitation .iv-cdcr .iv-gr-image,
+.invitation .iv-cdcr .iv-br-image {
+    width: 98%;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}

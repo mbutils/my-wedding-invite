@@ -1,0 +1,22 @@
+.logo-name {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    --logo-name-fs: 300px;
+}
+.logo-name .lg-groom {
+    font-size: var(--logo-name-fs);
+    left: 140px;
+}
+.logo-name .lg-bride {
+    font-size: var(--logo-name-fs);
+    top: calc(var(--logo-name-fs) * 0.375);
+    /* right: calc(var(--logo-name-fs) * 0.2); */
+    left: 325px;
+}
+.logo-name .lg-and {
+    font-size: calc(var(--logo-name-fs) * 0.75);
+    top: calc(var(--logo-name-fs) * 0.47 + 1px);
+    left: 187px;
+}

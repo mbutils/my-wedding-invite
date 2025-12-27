@@ -1,0 +1,245 @@
+@font-face {
+  font-family: Magellin;
+  src: url('../assets/fonts/handwriting/SVN-Magellin.otf');
+}
+@font-face {
+  font-family: Spencerio;
+  src: url('../assets/fonts/handwriting/SVN-Spencerio.otf');
+}
+@font-face {
+  font-family: Waliglona;
+  src: url('../assets/fonts/handwriting/SVN-Waliglona.otf');
+}
+@font-face {
+  font-family: Austin;
+  src: url('../assets/fonts/handwriting/SVN-Austin.otf');
+}
+@font-face {
+  font-family: Diamonda;
+  src: url('../assets/fonts/handwriting/SVN-Diamonda.otf');
+}
+@font-face {
+  font-family: HousttelySignature;
+  src: url('../assets/fonts/handwriting/SVN-Housttely-Signature.otf');
+}
+@font-face {
+  font-family: JustSunday;
+  src: url('../assets/fonts/handwriting/SVN-Just\ Sunday.otf');
+}
+@font-face {
+  font-family: ImperialScript;
+  src: url('../assets/fonts/handwriting/ImperialScript-Regular.ttf');
+}
+@font-face {
+  font-family: MjLovely;
+  src: url('../assets/fonts/handwriting/MJ-Lovely-Love.ttf');
+}
+@font-face {
+  font-family: MjVipDay;
+  src: url('../assets/fonts/handwriting/MJ-VIP-Daytonica.ttf');
+}
+@font-face {
+  font-family: Brunette;
+  src: url('../assets/fonts/handwriting/SVN-Brunette.otf');
+}
+
+.ff-magel {
+  font-family: Magellin, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-spen {
+  font-family: Spencerio, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-walig {
+  font-family: Waliglona, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-austin {
+  font-family: Austin, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-diam {
+  font-family: Diamonda, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-houst {
+  font-family: HousttelySignature, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-justsun {
+  font-family: JustSunday, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-imperial {
+  font-family: ImperialScript, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-mjlove {
+  font-family: MjLovely, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-mjvip {
+  font-family: MjVipDay, Avenir, Helvetica, Arial, sans-serif;
+}
+.ff-brunet {
+  font-family: Brunette, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Betrayos;
+  src: url('../assets/fonts/handwriting/MJ-Betrayos.ttf');
+}
+.ff-betrayos {
+  font-family: Betrayos, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Thalune;
+  src: url('../assets/fonts/handwriting/MJ-Thalune.ttf');
+}
+.ff-thalune {
+  font-family: Thalune, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Sidneyland;
+  src: url('../assets/fonts/handwriting/1FTV-Sidneyland.otf');
+}
+.ff-sidney {
+  font-family: Sidneyland, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: WoodsenSig;
+  src: url('../assets/fonts/handwriting/1FTV-Woodsen-Signature.otf');
+}
+.ff-woodsen {
+  font-family: WoodsenSig, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Azkia;
+  src: url('../assets/fonts/handwriting/UTM-Azkia.ttf');
+}
+.ff-azkia {
+  font-family: Azkia, Avenir, Helvetica, Arial, sans-serif;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------ */
+@font-face {
+  font-family: Kedanty;
+  src: url('../assets/fonts/sans/MJKedanty/MJ\ Kedanty.ttf');
+}
+.ff-kedanty {
+  font-family: Kedanty, Avenir, Helvetica, Arial, sans-serif;
+}
+@font-face {
+  font-family: KedantyIta;
+  src: url('../assets/fonts/sans/MJKedanty/MJ\ Kedanty-Italic.ttf');
+}
+.ff-kedanty-i {
+  font-family: KedantyIta, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: MJRoyaleCouture;
+  src: url('../assets/fonts/sans/MJRoyaleCouture-1/MJ\ Royale\ Couture\ Sans.ttf');
+}
+.ff-roycou {
+  font-family: MJRoyaleCouture, Avenir, Helvetica, Arial, sans-serif;
+}
+@font-face {
+  font-family: MJRoyaleCoutureSerif;
+  src: url('../assets/fonts/sans/MJRoyaleCouture-1/MJ\ Royale\ Couture\ Serif.ttf');
+}
+.ff-roycou-sef {
+  font-family: MJRoyaleCoutureSerif, Avenir, Helvetica, Arial, sans-serif;
+}
+@font-face {
+  font-family: MJRoyaleCoutureScript;
+  src: url('../assets/fonts/sans/MJRoyaleCouture-1/MJ\ RoyaleCouture\ Script.ttf');
+}
+.ff-roycou-scr {
+  font-family: MJRoyaleCoutureScript, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: UTMEncoreRegular;
+  src: url('../assets/fonts/sans/UTM-Encore-Regular.ttf');
+}
+.ff-utmencore {
+  font-family: UTMEncoreRegular, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: FzQastars;
+  src: url('../assets/fonts/sans/FzQastars.ttf');
+}
+.ff-qastars {
+  font-family: FzQastars, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: SVNParisPro;
+  src: url('../assets/fonts/sans/SVN-Paris-Pro.otf');
+}
+.ff-parispro {
+  font-family: SVNParisPro, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Camaro;
+  src: url('../assets/fonts/sans/1FTV-Camaro.otf');
+}
+.ff-camaro {
+  font-family: Camaro, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Cyrano;
+  src: url('../assets/fonts/sans/SVN-Cyrano.otf');
+}
+.ff-cyrano {
+  font-family: Cyrano, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Seiston;
+  src: url('../assets/fonts/sans/SVN-Seiston.otf');
+}
+.ff-seiston {
+  font-family: Seiston, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: MJElegantWomanRegular;
+  src: url('../assets/fonts/handwriting/MJElegantWomanRegular-1.ttf');
+}
+.ff-elegantwoman {
+  font-family: MJElegantWomanRegular, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: DonnaSmith;
+  src: url('../assets/fonts/handwriting/MJ-DonnaSmith.ttf');
+}
+.ff-donnasmith {
+  font-family: DonnaSmith, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Egorycastle;
+  src: url('../assets/fonts/handwriting/UTM-Egorycastle.ttf');
+}
+.ff-egorycastle {
+  font-family: Egorycastle, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: MJmonalisa;
+  src: url('../assets/fonts/handwriting/MJmonalisa.ttf');
+}
+.ff-monalisa {
+  font-family: MJmonalisa, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: MontserratReg;
+  src: url('../assets/fonts/sans/Montserrat-Regular.otf');
+}
+.ff-montserr {
+  font-family: MontserratReg, Avenir, Helvetica, Arial, sans-serif;
+}

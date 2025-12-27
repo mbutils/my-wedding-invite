@@ -1,0 +1,21 @@
+/* @import url('../node_modules/bootstrap/scss/bootstrap.scss'); */
+@import url('styles/font.css');
+@import url('styles/button.css');
+
+:root {
+  font-family: MontserratReg, Avenir, Helvetica, Arial, sans-serif !important;
+
+  color: #213547;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}

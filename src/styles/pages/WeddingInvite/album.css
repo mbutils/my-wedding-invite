@@ -1,0 +1,19 @@
+.album .section-content {
+    --frame-color: #5988b4;
+}
+
+.album .al-album-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.album .al-album-1 .al-album-1-item {
+    width: 25%;
+    height: fit-content;
+    border: 3px solid var(--frame-color);
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+.album .al-album-1 .al-album-1-item img {
+    width: 100%;
+}

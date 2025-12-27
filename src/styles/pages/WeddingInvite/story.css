@@ -1,0 +1,11 @@
+.story .st-title {
+    display: flex;
+    font-size: 25px;
+    top: 10%
+}
+
+.story .st-frame-1 {
+    border: 1px solid #2a6092;
+    width: 50%;
+    height: 300px;
+}
