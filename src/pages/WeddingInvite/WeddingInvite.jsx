@@ -38,22 +38,6 @@ function WeddingInvite() {
     
         lenis.on('scroll', ScrollTrigger.update)
 
-        // ScrollTrigger.scrollerProxy(document.body, {
-        //     scrollTop(value) {
-        //         return arguments.length
-        //         ? lenis.scrollTo(value)
-        //         : window.scrollY;
-        //     },
-        //     getBoundingClientRect() {
-        //         return {
-        //         top: 0,
-        //         left: 0,
-        //         width: window.innerWidth,
-        //         height: window.innerHeight,
-        //         };
-        //     },
-        // });
-    
         ScrollTrigger.refresh()
     
         return () => lenis.destroy()
@@ -61,9 +45,6 @@ function WeddingInvite() {
 
     return (
         <div className="invite-wrapper">
-            {/* <div>Trân trọng kính mời {guest}</div>
-            <div>và {InviteAttachment[attach]}</div>
-            <div>là bạn của {GuestOf[guestOf]}</div> */}
             <Hero/>
             <Invitation/>
             <Timeline/>

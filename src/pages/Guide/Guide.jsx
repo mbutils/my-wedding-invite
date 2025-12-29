@@ -4,7 +4,10 @@ import { GuestOf, InviteAttachment } from '../../utils/Constants';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import { BlockOutlined, ExportOutlined } from '@ant-design/icons';
 import { debounce } from 'lodash';
-import Lenis from '@studio-freight/lenis'
+// import Lenis from '@studio-freight/lenis'
+import {isMobile} from 'react-device-detect';
+import {ReactLenis,useLenis} from 'lenis/react'
+import 'lenis/dist/lenis.css'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -15,6 +18,9 @@ function GuidePage() {
   const [attach, setAttach] = useState('1');
   const [guestOf, setGuestOf] = useState('1');
   const [link, setLink] = useState();
+  const lenisRef = useRef();
+  const wrapper = useRef(null);
+  const content = useRef(null);
 
   useEffect(() => {
     changeLink(guest);
@@ -55,27 +61,68 @@ function GuidePage() {
     window.open(link, '_blank', 'noopener,noreferrer');
   }
 
+  const lenis = useLenis(({ scroll }) => {
+    // suppose need to update here the ScrollTriggers
+    ScrollTrigger.update();
+  });
+  
   // init scroll
+  // useEffect(() => {
+  //   const lenis = new Lenis({
+  //     smooth: true,
+  //     lerp: 0.08,          // lower = smoother (mobile-friendly)
+  //     wheelMultiplier: 1,
+  //     touchMultiplier: 1.2
+  //   })
+
+  //   function raf(time) {
+  //     lenis.raf(time)
+  //     requestAnimationFrame(raf)
+  //   }
+  //   requestAnimationFrame(raf)
+
+  //   lenis.on('scroll', ScrollTrigger.update)
+
+  //   ScrollTrigger.refresh()
+
+  //   return () => lenis.destroy()
+  // }, [])
+
   useEffect(() => {
-    const lenis = new Lenis({
-      smooth: true,
-      lerp: 0.08,          // lower = smoother (mobile-friendly)
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2
-    })
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000)
     }
-    requestAnimationFrame(raf)
+    // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
+    // This ensures Lenis's smooth scroll animation updates on each GSAP tick
+    gsap.ticker.add(update);
 
-    lenis.on('scroll', ScrollTrigger.update)
+    // Disable lag smoothing in GSAP to prevent any delay in scroll animations
+    gsap.ticker.lagSmoothing(0);
 
-    ScrollTrigger.refresh()
+    ScrollTrigger.defaults({ scroller: wrapper.current });
 
-    return () => lenis.destroy()
-  }, [])
+    const rafId = requestAnimationFrame(update)
+
+    // ScrollTrigger.scrollerProxy(wrapper.current, {
+    //   scrollTop(value) {
+    //     return arguments.length
+    //       ? lenisRef.current?.scrollTo(value, { duration: 0, immediate: true })
+    //       : lenisRef.current?.scroll;
+    //   },
+    //   getBoundingClientRect() {
+    //     return {
+    //       top: 0,
+    //       left: 0,
+    //       width: window.innerWidth,
+    //       height: window.innerHeight,
+    //     };
+    //   },
+    // });
+    return () => {
+      cancelAnimationFrame(rafId)
+      gsap.ticker.remove(update)
+    };
+  }, []);
 
   // effects
   const fadeRef = useRef(null);
@@ -115,7 +162,24 @@ function GuidePage() {
   }, [])
 
   return (
-    <>
+    <ReactLenis
+      ref={lenisRef}
+      options={{
+        autoRaf: false,
+        wrapper: wrapper.current,
+        content: content.current,
+        duration: isMobile ? 1.5 : 3,
+        smoothTouch: true,
+        touchMultiplier: 1.0,
+        touchInertiaMultiplier: 50,
+        direction: "vertical",
+        gestureDirection: "vertical",
+        syncTouch: true,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        //eventsTarget: document.documentElement,
+      }}
+    >
+    {/* <> */}
       <Row>
         <Col span={12}>
           <Row>
@@ -329,15 +393,13 @@ function GuidePage() {
         </Col>
       </Row>
 
-      {/* MUST have scroll space */}
-      <div style={{ height: '100vh' }} />
-      <div className='guide-lenis'>
-        {/* <section className='section hero'> */}
-          <h1 ref={fadeRef}>Lenis Effects</h1>
-        {/* </section> */}
-      </div>
-      <div style={{ height: '100vh' }} />
-    </>
+      {/* <div style={{ height: '100vh' }} /> */}
+      {/* <div className='guide-lenis'> */}
+        <h1 ref={fadeRef}>Lenis Effects</h1>
+      {/* </div> */}
+      {/* <div style={{ height: '100vh' }} /> */}
+    {/* </> */}
+    </ReactLenis>
   )
 }
 
