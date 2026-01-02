@@ -1,5 +1,6 @@
 .album .section-content {
     --frame-color: #5988b4;
+    flex-direction: column;
 }
 
 .album .al-album-1 {
@@ -16,4 +17,14 @@
 }
 .album .al-album-1 .al-album-1-item img {
     width: 100%;
+}
+
+.album .al-parallax {
+    height: 'fit-content';
+}
+.album .al-parallax .al-parallax-1 {
+    width: 75%;
+}
+.album .al-parallax .al-parallax-2 {
+    width: 65%;
 }

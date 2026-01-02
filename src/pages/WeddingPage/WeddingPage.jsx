@@ -1,9 +1,11 @@
 import gsap from "gsap";
 import Lenis from "lenis";
+import {isMobile} from 'react-device-detect';
 import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 import 'lenis/dist/lenis.css';
+import CylinderText from "../ui/CylinderText";
 
 function WeddingPage() {
     const containerRef = useRef(null);
@@ -19,7 +21,7 @@ function WeddingPage() {
           gestureOrientation: 'vertical',
           smoothWheel: true,
           wheelMultiplier: 1,
-          smoothTouch: true, // Disable on touch for better mobile performance
+          smoothTouch: isMobile, // Disable on touch for better mobile performance
           touchMultiplier: 2,
           infinite: false,
         });
@@ -39,38 +41,38 @@ function WeddingPage() {
         const sections = gsap.utils.toArray('.scroll-section');
         
         sections.forEach((section, i) => {
-        //   gsap.from(section, {
-        //     scrollTrigger: {
-        //       trigger: section,
-        //       start: 'top 80%',
-        //       end: 'top 20%',
-        //       scrub: 1,
-        //     //   markers: false,
-        //     },
-        //     opacity: 0,
-        //     y: 100,
-        //     duration: 1,
-        //   });
-        gsap.fromTo(
-        section,
-        {
-          opacity: 0,
-          y: 100,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            end: 'top 50%',
-            scrub: 1,
-            markers: false, // Set to true to debug
-          },
-        }
-      );
+          // gsap.from(section, {
+          //   scrollTrigger: {
+          //     trigger: section,
+          //     start: 'top 80%',
+          //     end: 'top 20%',
+          //     scrub: 1,
+          //     markers: false,
+          //   },
+          //   opacity: 0,
+          //   y: 100,
+          //   duration: 1,
+          // });
+          gsap.fromTo(
+            section,
+            {
+              opacity: 0,
+              y: 100,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                end: 'top 50%',
+                scrub: 1,
+                markers: false, // Set to true to debug
+              },
+            }
+          );
         });
 
         // Cleanup
@@ -241,6 +243,8 @@ function WeddingPage() {
         >
           <div style={contentInnerStyle}>
             <div style={cardStyle}>
+          <CylinderText/>
+          <CylinderText/>
               <h2 style={h2Style}>
                 Section {num}
               </h2>
