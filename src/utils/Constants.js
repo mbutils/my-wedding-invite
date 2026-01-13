@@ -7,3 +7,4 @@ export const GuestOf = {
     1: 'Chú rể',
     2: 'Cô dâu',
 }
+

@@ -1,3 +1,5 @@
+import { Informations } from "./informations";
+
 /**
  * 
  * @param {*} refName 
@@ -13,4 +15,14 @@ export function scrollTriggerVar(refName, start, end) {
         scrub: true,
         toggleActions: 'play reverse play reverse',
     }
+}
+
+export function getFirst(guestOf, key) {
+    const obj = guestOf === 1 ? 'Groom' : 'Bride';
+    return Informations[obj][key];
+}
+
+export function getSecond(guestOf, key) {
+    const obj = guestOf === 1 ? 'Bride' : 'Groom';
+    return Informations[obj][key];
 }

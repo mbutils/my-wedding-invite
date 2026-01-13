@@ -5,287 +5,229 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 import 'lenis/dist/lenis.css';
+import '../../styles/pages/WeddingPage/weddingPage.css';
 import CylinderText from "../ui/CylinderText";
+import { GuestOf } from "../../utils/Constants";
+import * as UIUtils from "../../utils/UIUtils";
 
 function WeddingPage() {
     const containerRef = useRef(null);
     const lenisRef = useRef(null);
-    const [isScrolling, setIsScrolling] = useState(false);
+    const [guestOf, setGuestOf] = useState(2);
 
     useEffect(() => {
-        // Initialize Lenis for smooth scrolling
-        const lenis = new Lenis({
-          duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          orientation: 'vertical',
-          gestureOrientation: 'vertical',
-          smoothWheel: true,
-          wheelMultiplier: 1,
-          smoothTouch: isMobile, // Disable on touch for better mobile performance
-          touchMultiplier: 2,
-          infinite: false,
-        });
+      // Initialize Lenis for smooth scrolling
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        smoothTouch: isMobile, // Disable on touch for better mobile performance
+        touchMultiplier: 2,
+        infinite: false,
+      });
 
-        lenisRef.current = lenis;
+      lenisRef.current = lenis;
 
-        // GSAP ScrollTrigger integration with Lenis
-        lenis.on('scroll', ScrollTrigger.update);
+      // GSAP ScrollTrigger integration with Lenis
+      lenis.on('scroll', ScrollTrigger.update);
 
-        gsap.ticker.add((time) => {
-          lenis.raf(time * 1000);
-        });
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
 
-        gsap.ticker.lagSmoothing(0);
+      gsap.ticker.lagSmoothing(0);
 
-        // Example ScrollTrigger animations
-        const sections = gsap.utils.toArray('.scroll-section');
-        
-        sections.forEach((section, i) => {
-          // gsap.from(section, {
-          //   scrollTrigger: {
-          //     trigger: section,
-          //     start: 'top 80%',
-          //     end: 'top 20%',
-          //     scrub: 1,
-          //     markers: false,
-          //   },
-          //   opacity: 0,
-          //   y: 100,
-          //   duration: 1,
-          // });
-          gsap.fromTo(
-            section,
-            {
-              opacity: 0,
-              y: 100,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: section,
-                start: 'top 80%',
-                end: 'top 50%',
-                scrub: 1,
-                markers: false, // Set to true to debug
-              },
-            }
-          );
-        });
+      // Example ScrollTrigger animations
+      // const sections = gsap.utils.toArray('.scroll-section');
+      
+      // sections.forEach((section, i) => {
+      //   gsap.fromTo(
+      //     section,
+      //     {
+      //       opacity: 0,
+      //       y: 100,
+      //     },
+      //     {
+      //       opacity: 1,
+      //       y: 0,
+      //       duration: 1,
+      //       ease: 'power2.out',
+      //       scrollTrigger: {
+      //         trigger: section,
+      //         start: 'top 80%',
+      //         end: 'top 50%',
+      //         scrub: 1,
+      //         markers: false, // Set to true to debug
+      //       },
+      //     }
+      //   );
+      // });
 
-        // Cleanup
-        return () => {
-            lenis.destroy();
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
+      // Cleanup
+      return () => {
+          lenis.destroy();
+          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      };
     }, []);
 
-    const containerStyle = {
-    minHeight: '100vh',
-    background: 'linear-gradient(to bottom, #0f172a, #1e293b)',
-  };
-
-  const sectionStyle = {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '0 1rem',
-  };
-
-  const heroStyle = {
-    ...sectionStyle,
-    height: '100vh',
-  };
-
-  const textCenterStyle = {
-    textAlign: 'center',
-  };
-
-  const h1Style = {
-    fontSize: 'clamp(3rem, 8vw, 5rem)',
-    fontWeight: 'bold',
-    color: 'white',
-    marginBottom: '1.5rem',
-  };
-
-  const heroSubtitleStyle = {
-    fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
-    color: '#cbd5e1',
-    maxWidth: '42rem',
-    margin: '0 auto',
-  };
-
-  const scrollIndicatorStyle = {
-    marginTop: '2rem',
-    color: '#94a3b8',
-  };
-
-  const contentSectionStyle = {
-    ...sectionStyle,
-    padding: '5rem 1rem',
-  };
-
-  const contentInnerStyle = {
-    maxWidth: '64rem',
-    margin: '0 auto',
-  };
-
-  const cardStyle = {
-    background: 'rgba(255, 255, 255, 0.1)',
-    backdropFilter: 'blur(10px)',
-    borderRadius: '1rem',
-    padding: 'clamp(2rem, 5vw, 3rem)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-  };
-
-  const h2Style = {
-    fontSize: 'clamp(2rem, 6vw, 3rem)',
-    fontWeight: 'bold',
-    color: 'white',
-    marginBottom: '1.5rem',
-  };
-
-  const paragraphStyle = {
-    fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
-    color: '#cbd5e1',
-    lineHeight: '1.8',
-  };
-
-  const gridStyle = {
-    marginTop: '1.5rem',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '1rem',
-  };
-
-  const featureCardStyle = {
-    background: 'rgba(255, 255, 255, 0.05)',
-    borderRadius: '0.5rem',
-    padding: '1.5rem',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-  };
-
-  const iconBoxStyle = {
-    width: '3rem',
-    height: '3rem',
-    background: '#3b82f6',
-    borderRadius: '0.5rem',
-    marginBottom: '1rem',
-  };
-
-  const featureTitleStyle = {
-    color: 'white',
-    fontWeight: '600',
-    marginBottom: '0.5rem',
-  };
-
-  const featureTextStyle = {
-    color: '#94a3b8',
-    fontSize: '0.875rem',
-  };
-
-  const footerStyle = {
-    ...sectionStyle,
-    height: '100vh',
-    background: '#020617',
-  };
-
-  const codeBlockStyle = {
-    marginTop: '1.5rem',
-    textAlign: 'left',
-    maxWidth: '42rem',
-    margin: '1.5rem auto 0',
-    background: '#0f172a',
-    borderRadius: '0.5rem',
-    padding: '1.5rem',
-    fontSize: '0.875rem',
-    color: '#cbd5e1',
-    fontFamily: 'monospace',
-  };
-
-  const commandStyle = {
-    color: '#60a5fa',
-    display: 'block',
-    marginBottom: '0.25rem',
-  };
-
-  const commentStyle = {
-    color: '#94a3b8',
-    marginTop: '1rem',
-  };
+  function info(key) {
+    return UIUtils.getFirst(guestOf, key);
+  }
+  function info2nd(key) {
+    return UIUtils.getSecond(guestOf, key);
+  }
 
   return (
-    <div ref={containerRef} style={containerStyle}>
+    <div ref={containerRef} className={`wedding-page-wrapper ${isMobile ? '' : '--desktop'}`}>
       {/* Hero Section */}
-      <section className="scroll-section" style={heroStyle}>
-        <div style={textCenterStyle}>
-          <h1 style={h1Style}>
-            Smooth Scroll Demo
-          </h1>
-          <p style={heroSubtitleStyle}>
-            React 19.2 + Lenis 1.3 + GSAP 3.14 with ScrollTrigger
-          </p>
-          <div style={scrollIndicatorStyle}>
-            <p style={{ fontSize: '0.875rem' }}>Scroll down to see the magic ↓</p>
-          </div>
+      <section className="scroll-section">
+        <div className="wp-hero">
+          <img className="hero-img" src="/imgs/couple/album/IMG_5087.jpeg" />
+          <div className="hero-text ff-betrayos">We get <span className="hero-text-2">married!</span></div>
         </div>
       </section>
 
-      {/* Content Sections */}
-      {[1, 2, 3, 4].map((num) => (
-        <section
-          key={num}
-          className="scroll-section"
-          style={contentSectionStyle}
-        >
-          <div style={contentInnerStyle}>
-            <div style={cardStyle}>
-          <CylinderText/>
-          <CylinderText/>
-              <h2 style={h2Style}>
-                Section {num}
-              </h2>
-              <p style={paragraphStyle}>
-                This section will fade in and slide up as you scroll. The smooth scrolling
-                is powered by Lenis, while GSAP's ScrollTrigger handles the animations.
-                Touch interactions are optimized for mobile devices.
-              </p>
-              <div style={gridStyle}>
-                {[1, 2, 3].map((card) => (
-                  <div key={card} style={featureCardStyle}>
-                    <div style={iconBoxStyle}></div>
-                    <h3 style={featureTitleStyle}>Feature {card}</h3>
-                    <p style={featureTextStyle}>
-                      Mobile-friendly scroll animations
-                    </p>
-                  </div>
-                ))}
-              </div>
+      {/* Invite & Stories */}
+      <section className="scroll-section">
+        <div className="wp-invite-stories">
+          <div className="ff-parispro invite-letter">Thư mời tham dự</div>
+          <div className="ff-roycou-scr invite-name">Anh Kiều và Gia đình</div>
+          <div className="invite-text">Trân trọng kính mời đến dự buổi {info("event").toLowerCase()} của</div>
+
+          <div className="groom-bride-instruct">
+            <div className="groom-instruct">
+              <div className="groom-title ff-parispro">{info("name").title}</div>
+              <div className="groom-name ff-utmencore">{info("name").fullName}</div>
+              <img className="groom-img" src={info("name").img} />
+            </div>
+            <div className="bride-instruct">
+              <img className="bride-img" src={info2nd("name").img} />
+              <div className="bride-title ff-parispro">{info2nd("name").title}</div>
+              <div className="bride-name ff-utmencore">{info2nd("name").fullName}</div>
             </div>
           </div>
-        </section>
-      ))}
+
+          <div className="story-para ff-montserr">Ngày ấy, tôi 25! Một mình giữa phố thị nấp tập. Mỗi chiều cuối tuần thường chạy xe vòng quanh qua những con phố, len lỏi trong từng dòng người tấp nập. Nhưng rồi một ngày đẹp trời, người con trai ấy xuất hiện, nắm tay rồi thủ thỉ vào tai: “Hy vọng sau này anh được làm những điều ấy cùng em".</div>
+          <img className="story-img" src="/imgs/couple/album/IMG_5090.jpeg" />
+
+        </div>
+      </section>
+
+      {/* Details */}
+      <section className="scroll-section">
+        <div className="wp-announcement">
+          {/* Family */}
+          {/* <img className="family-frame-img" src="/imgs/ui/family-frame.png" /> */}
+          
+          <div className="wp-logo-name">
+            <img className="wp-logo-frame-img" src="/imgs/ui/logo-frame.png" />
+            <div className="wp-logo-groom ff-camaro">{info("logo")}</div>
+            {/* <div className="wp-logo-and">&</div> */}
+            <div className="wp-logo-bride ff-camaro">{info2nd("logo")}</div>
+          </div>
+
+          <div className="family">
+            <div className="family-names family-groom">
+              <div className="family-title ff-parispro">{info("family").title}</div>
+              <div className="family-name"><span className="name-title">Bố.</span> {info("family").father}</div>
+              <div className="family-name"><span className="name-title">Mẹ.</span> {info("family").mother}</div>
+            </div>
+            <div className="family-names family-bride">
+              <div className="family-title ff-parispro">{info2nd("family").title}</div>
+              <div className="family-name"><span className="name-title">Bố.</span> {info2nd("family").father}</div>
+              <div className="family-name"><span className="name-title">Mẹ.</span> {info2nd("family").mother}</div>
+            </div>
+          </div>
+
+          <div className="announcement-title">
+            <div className="ff-kedanty">Trân trọng báo tin</div>
+            <div className="ff-roycou">{info("event")}</div>
+            <div className="ff-kedanty">của</div>
+          </div>
+          
+
+
+          <div className="announcement-time">
+            <div className="ff-roycou">Hôn lễ được cử hành tại tư gia</div>
+            <div className="ff-roycou">vào lúc 
+              <span className="mx-1">{info("weddingTime").at}</span>
+              -<span className="ms-1">{info("weddingTime").on}</span>
+            </div>
+          </div>
+          <div className="announcement-date">
+            <div className="date-item">{info("weddingTime").day}</div>
+            <div className="date-item">{info("weddingTime").month}</div>
+            <div className="date-item">{info("weddingTime").year}</div>
+          </div>
+          <div className="announcement-time-lunar">
+            Nhằm ngày {info("weddingTime").lunar}
+          </div>
+
+          {/* Location */}
+
+          {/* Save the date */}
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="scroll-section">
+        <div className="wp-timeline ff-roycou-sef">
+          <div className="timeline-title ff-roycou-scr">Lịch trình ngày cưới</div>
+
+          {info("timeline").map((item, index) => (
+            <div className="timeline-item" key={index}>
+              <img className="item-img" src={item.img} />
+              <div className="item-time">
+                <div>{item.time}</div>
+                <div>{item.activity}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Album */}
+      <section className="scroll-section">
+        
+      </section>
+
+      {/* RSVP */}
+      <section className="scroll-section">
+        <div className="wp-rsvp">
+          <input className="rsvp-input" placeholder="Họ và tên" />
+          <select className="rsvp-input">
+            <option value="" disabled selected>Bạn sẽ đến chứ?</option>
+            <option value="yes">Tôi sẽ đến</option>
+            <option value="no">Tôi xin lỗi không thể đến</option>
+          </select>
+          <select className="rsvp-input">
+            <option value="" disabled selected>Bạn tham dự cùng ai?</option>
+            {Array.from({length: 8}, (_, i) => i + 1).map(num => (
+              <option key={num} value={num}>{num} người</option>
+            ))}
+          </select>
+          <input className="rsvp-input" placeholder="Số điện thoại của bạn" />
+          <textarea className="rsvp-input" placeholder="Lời nhắn tới cô dâu chú rể"></textarea>
+          <button className="rsvp-submit-btn ff-montserr">Gửi lời nhắn & xác nhận</button>
+        </div>
+      </section>
 
       {/* Footer */}
-      <section className="scroll-section" style={footerStyle}>
-        <div style={textCenterStyle}>
-          <h2 style={{ ...h2Style, fontSize: 'clamp(2.5rem, 7vw, 4rem)', marginBottom: '1rem' }}>
-            End of Demo
-          </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.125rem' }}>
-            Setup Instructions:
-          </p>
-          <div style={codeBlockStyle}>
-            <p style={{ marginBottom: '0.5rem' }}># Install dependencies:</p>
-            <span style={commandStyle}>npm install react@19.2 react-dom@19.2</span>
-            <span style={commandStyle}>npm install lenis@1.3</span>
-            <span style={commandStyle}>npm install gsap@3.14</span>
-            <p style={commentStyle}>
-              Then uncomment the code in useEffect to activate smooth scrolling
-            </p>
+      <section className="scroll-section">
+        <div className="wp-footer">
+          {/* Countdown */}
+
+          {/* Thank you */}
+          <div className="thankyou-wrapper">
+            <img className="thankyou-img" src="/imgs/couple/footer/DSCF0117.JPG" />
+            <div className="thankyou-text-1 ff-monalisa">
+              <div>Cảm ơn bạn đã dành tình cảm cho chúng mình!</div>
+              <div>Sự hiện hiện của bạn chính là món quà ý nghĩa nhất, và chúng mình vô cùng trân quý khi được cùng bạn chia sẻ niềm hạnh phúc trong ngày trọng đại này.</div>
+            </div>
+            <div className="thankyou-text-2 ff-betrayos">Cảm ơn bạn đã ghé thăm!</div>
           </div>
         </div>
       </section>
