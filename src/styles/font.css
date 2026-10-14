@@ -243,3 +243,60 @@
 .ff-montserr {
   font-family: MontserratReg, Avenir, Helvetica, Arial, sans-serif;
 }
+
+
+@font-face {
+  font-family: ThuPhap;
+  src: url('/fonts/handwriting/Fz-DucThuyThuPhapFreeThuongmai.ttf');
+}
+.ff-thuphap {
+  font-family: ThuPhap, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Lovebird;
+  src: url('/fonts/handwriting/Fz-Lovebird.ttf');
+}
+.ff-lovebird {
+  font-family: Lovebird, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: ChuKyYustine;
+  src: url('/fonts/handwriting/Fz-Yustine-Signature.ttf');
+}
+.ff-chukyyustine {
+  font-family: ChuKyYustine, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: FzMadinahAuthentic;
+  src: url('/fonts/handwriting/FzMadinahAuthentic.ttf');
+}
+.ff-fzmadinahauthentic {
+  font-family: FzMadinahAuthentic, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: FzTheMoritza;
+  src: url('/fonts/handwriting/FzTheMoritza.ttf');
+}
+.ff-fzthemoritza {
+  font-family: FzTheMoritza, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: FzTheTricksterDisplay;
+  src: url('/fonts/handwriting/FzTheTricksterDisplay.ttf');
+}
+.ff-fzthetricksterdisplay {
+  font-family: FzTheTricksterDisplay, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: ChineseDouble;
+  src: url('/fonts/handwriting/ChineseSoft.ttf');
+}
+.ff-chinesedouble {
+  font-family: ChineseDouble, Avenir, Helvetica, Arial, sans-serif;
+}

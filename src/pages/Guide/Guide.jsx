@@ -60,7 +60,7 @@ function GuidePage() {
   }
 
   return (
-    
+  <>
     <Row>
       <Col span={12}>
         <Row>
@@ -108,8 +108,10 @@ function GuidePage() {
           <LogoName/>
         </Row>
       </Col>
+    </Row>
 
-      <Col span={12}>
+    <Row className='mt-5'>
+      <Col span={8}>
         <button className='h-btn'>
           count
         </button>
@@ -197,7 +199,7 @@ function GuidePage() {
         </div>
       </Col>
 
-      <Col span={12}>
+      <Col span={8}>
         <div className='font-item'>
           <label>ff-kedanty</label>
           <p className='fs-1 ff-kedanty'>Thư mời tham gia &</p>
@@ -275,8 +277,39 @@ function GuidePage() {
           <p className='ff-montserr'>Phan Quốc Huy & Phan Thị Lan</p>
         </div>
       </Col>
-    </Row>
 
+      <Col span={8}>
+        <div className='font-item'>
+          <label>ff-thuphap</label>
+          <p className='fs-1 ff-thuphap'>Thư mời tham gia &</p>
+        </div>
+        <div className='font-item'>
+          <label>ff-lovebird</label>
+          <p className='fs-1 ff-lovebird'>Thư mời tham gia & Phan Lan</p>
+        </div>
+        <div className='font-item'>
+          <label>ff-chukyyustine</label>
+          <p className='fs-1 ff-chukyyustine'>Thư mời tham gia &</p>
+        </div>
+        <div className='font-item'>
+          <label>ff-fzmadinahauthentic</label>
+          <p className='fs-1 ff-fzmadinahauthentic'>Thư mời tham gia &</p>
+        </div>
+        <div className='font-item'>
+          <label>ff-fzthemoritza</label>
+          <p className='fs-1 ff-fzthemoritza'>Q5uốc8 Huy5 & P2han5 L2an6</p>
+        </div>
+        <div className='font-item'>
+          <label>ff-fzthetricksterdisplay</label>
+          <p className='fs-1 ff-fzthetricksterdisplay'>Thư mời tham gia &</p>
+        </div>
+        <div className='font-item'>
+          <label>ff-chinesedouble</label>
+          <p className='fs-1 ff-chinesedouble'>囍 乐米沐和圆体</p>
+        </div>
+      </Col>
+    </Row>
+  </>
   )
 }
 
