@@ -5,10 +5,6 @@
 }
 
 .damngo-content {
-    /* background-image: url('/imgs/damngo/pink_watercolor_texture.jpeg');
-    background-repeat: no-repeat;
-    background-color: #fff;
-    background-size: 100%; */
     width: 100%;
     height: 100%;
     position: relative;
@@ -34,44 +30,44 @@
 
 .cherry-blossom-1 img {
     position: absolute;
-    top: -36px;
-    left: -5px;
-    width: 250px;
+    top: -6vh;
+    left: -1vw;
+    width: 20vw;
     transform: rotate(6deg);
 }
 .cherry-blossom-2 img {
     position: absolute;
-    top: 110px;
-    left: -20px;
-    width: 120px;
+    top: 13vh;
+    left: -2vw;
+    width: 9vw;
 }
 /* right */
 .cherry-blossom-3 img {
     position: absolute;
-    bottom: -50px;
-    right: 50px;
-    width: 200px;
+    bottom: -5%;
+    right: -4%;
+    width: 15vw;
     z-index: 6;
 }
 .cherry-blossom-4 img {
     position: absolute;
-    bottom: 42px;
-    right: -160px;
-    width: 350px;
-    transform: rotate(-3deg);
+    bottom: 9%;
+    right: -10%;
+    width: 25vw;
+    transform: rotate(-1deg);
 }
 .cherry-blossom-5 img {
     position: absolute;
-    bottom: -80px;
-    right: 100px;
-    width: 350px;
+    bottom: -10%;
+    right: 2%;
+    width: 24vw;
     z-index: 3;
 }
 .cherry-blossom-6 img {
     position: absolute;
     bottom: 0;
-    right: 76px;
-    width: 220px;
+    right: 0%;
+    width: 18vw;
     transform: rotate(-7deg);
     z-index: 4;
 }
@@ -93,34 +89,49 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 300px;
+    font-size: 22vw;
     color: #E97B94;
     opacity: 0.7;
+    z-index: 11;
 }
 .double-happy .wedding-rings img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    z-index: 10;
+    width: 9vw;
+
+    animation: rotateCenter 15s linear infinite;
 }
+@keyframes rotateCenter {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
 .main-content .title {
     position: absolute;
     top: 12%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 70px;
+    max-width: 50vw;
+    font-size: 5vw;
     color: #56191f;
+    display: flex;
+    justify-content: center;
+    z-index: 11;
 }
 .main-content .name {
     position: absolute;
     top: 40%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    font-size: 120px;
+    width: 24vw;
+    font-size: 9vw;
     text-align: center;
     color: #861B2B;
+    z-index: 11;
 
     /* font-feature-settings: "salt" 1, "ss01" 2; */
     /* font-variant-alternates: stylistic(salt); */
@@ -136,17 +147,18 @@
 
 .main-content .thank {
     position: absolute;
-    bottom: 21%;
+    bottom: 18%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 3.8vw;
     color: #56191f;
     text-align: center;
-    line-height: 50px;
+    line-height: 7vh;
+    z-index: 11;
 }
 
 .main-content .date-area {
-    font-size: 30px;
+    font-size: 2.2vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,7 +166,7 @@
     height: 100%;
     width: 100%;
     position: relative;
-    z-index: 10;
+    z-index: 10
 }
 .main-content .date-area .solar {
     position: absolute;
@@ -164,6 +176,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    line-height: 7.5vh;
 }
 .solar * {
     text-align: center;
@@ -172,35 +185,36 @@
 }
 .solar .month,
 .solar .year {
-    font-size: 35px;
-    letter-spacing: 4px;
+    font-size: 2.5vw;
+    letter-spacing: 0.3vw;
 }
 .solar .date {
-    font-size: 80px;
+    font-size: 5.5vw;
     color: #56191f;
-    height: 90px;
+    height: 7vh;
+    margin-top: 1vh;
 }
 
 .main-content .date-area .lunar * {
-    border: 2px solid #56191f;
+    border: 0.2vw solid #56191f;
     border-left: 0;
     border-right: 0;
-    width: 280px;
+    width: 21vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 5px;
+    padding-top: 1vh;
     position: absolute;
-    bottom: 8%;
+    bottom: 5.8%;
 }
 .main-content .date-area .lunar .left {
-    left: 32%;
+    left: 34%;
     transform: translate(-50%, -50%);
-    letter-spacing: 4px;
+    letter-spacing: 0.6vw;
 }
 
 .main-content .date-area .lunar .right {
-    left: 68%;
+    left: 66%;
     transform: translate(-50%, -50%);
-    letter-spacing: 2px;
+    letter-spacing: 0.2vw;
 }

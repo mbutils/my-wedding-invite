@@ -1,4 +1,4 @@
-import '../../styles/pages/Guide.css';
+import '../../styles/pages/guide-page/index.css';
 import { Select, Input, Col, Row, Button, message } from 'antd';
 import { GuestOf, InviteAttachment } from '../../utils/Constants';
 import { useEffect, useState, useMemo, useRef } from 'react';

@@ -3,8 +3,21 @@ export const InviteAttachment = {
     2: 'Người thương',
 }
 
+export const GuestOfOp = [
+    { value: 0, label: 'Chung' },
+    { value: 1, label: 'Chú rể' },
+    { value: 2, label: 'Cô dâu' },
+]
+
 export const GuestOf = {
+    0: 'Chung',
     1: 'Chú rể',
     2: 'Cô dâu',
+}
+
+export const CategoryType = {
+    GROUP: 'GROUP',
+    ATTACH: 'ATTACH',
+    EXPENSE: 'EXPENSE',
 }
 

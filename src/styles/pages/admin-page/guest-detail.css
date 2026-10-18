@@ -1,0 +1,18 @@
+.form-row {
+    display: flex;
+    width: 100%;
+}
+
+.form-row .form-item {
+    width: 100%;
+}
+.form-row .form-item:first-child {
+    margin-right: 10px;
+}
+.form-row .form-item:last-child {
+    margin-left: 10px;
+}
+
+.form-row .form-btn-row {
+    width: 100%;
+}
