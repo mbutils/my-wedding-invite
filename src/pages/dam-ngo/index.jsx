@@ -1,5 +1,4 @@
-import React from 'react';
-import '../../styles/pages/DamNgo/DamNgo.css';
+import '../../styles/pages/dam-ngo/index.css';
 
 function DamNgo() {
   return (

@@ -1,0 +1,29 @@
+.admin-page {
+    background-color: rgba(255, 247, 222, 0.322);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    width: 100%;
+    padding: 10px 10px 0 10px;
+    max-width: 800px;
+}
+
+.admin-page .page-content {
+    padding: 8px 10px 40px 10px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.admin-page .title .tab-item {
+    display: flex;
+    flex-direction: column;
+    line-height: 16px;
+    padding: 4px 0;
+}
+.tab-item .tab-name {
+    font-size: 12px;
+}

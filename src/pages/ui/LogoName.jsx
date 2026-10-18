@@ -1,4 +1,4 @@
-import "../../styles/pages/ui/logoName.css"
+import "../../styles/ui/logoName.css"
 
 export default function LogoName() {
     return (
