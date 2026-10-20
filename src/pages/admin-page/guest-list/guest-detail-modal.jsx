@@ -141,21 +141,21 @@ function GuestDetailModal(props) {
                             </Form.Item>
                         </div>
                         <div className="form-row">
+                                {/* <Space.Compact> */}
                             <Form.Item name="phone" label="Số điện thoại" className="form-item">
-                                <Space.Compact>
-                                    <Input placeholder="09..." type="number" allowClear/>
-                                    <Tooltip title="Copy SĐT">
+                                <Input placeholder="09..." type="number" allowClear/>
+                            </Form.Item>
+                                    {/* <Tooltip title="Copy SĐT">
                                         <Button type="default" icon={<CopyOutlined />} onClick={copyPhone}></Button>
                                     </Tooltip>
-                                </Space.Compact>
-                            </Form.Item>
+                                </Space.Compact> */}
                             <Form.Item name="messenger_link" label="Facebook/Messenger" className="form-item">
-                                <Space.Compact>
+                                {/* <Space.Compact> */}
                                     <Input placeholder="https://..." allowClear/>
-                                    <Tooltip title="Mở link">
+                                    {/* <Tooltip title="Mở link">
                                         <Button type="default" icon={<FacebookOutlined />} onClick={openLink}></Button>
                                     </Tooltip>
-                                </Space.Compact>
+                                </Space.Compact> */}
                             </Form.Item>
                         </div>
                         <div className="form-row">
