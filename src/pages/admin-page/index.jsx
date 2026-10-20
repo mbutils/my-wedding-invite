@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GuestList from "./guest-list";
 import ExpenseList from "./expense-list";
 import { Segmented } from "antd";

@@ -1,9 +1,10 @@
-import { Button, Drawer, Form, Input, InputNumber, Select, Space, Spin } from "antd";
+import { Button, Drawer, Form, Input, Select, Space, Spin, Tooltip } from "antd";
 import { CategoryType, GuestOfOp } from "../../../utils/Constants";
 import { useEffect, useState } from "react";
 import CategoryService from "../../../services/categoryService";
 import GuestListService from "../../../services/guestListService";
 import "../../../styles/pages/admin-page/guest-detail.css";
+import { CopyOutlined, ExportOutlined, FacebookOutlined } from "@ant-design/icons";
 
 
 function GuestDetailModal(props) {
@@ -14,6 +15,10 @@ function GuestDetailModal(props) {
     const [attachOp, setAttachOp] = useState([]);
 
     useEffect(() => {
+        reloadOptions();
+    }, []);
+
+    useEffect(() => {
         if (visible) {
            loadAll();
         }
@@ -21,14 +26,13 @@ function GuestDetailModal(props) {
 
     async function loadAll() {
         setLoading(true);
-        await reloadOptions();
         form.resetFields();
 
         if (mode === "edit") {
             await loadGuest();
         } else {
             form.setFieldsValue({
-                relationship: 0,
+                relationship: 1,
                 group_name: 'FRIEND',
                 total_invite: 1,
             });
@@ -42,7 +46,7 @@ function GuestDetailModal(props) {
     }
 
     async function reloadOptions() {
-        const groupRes = await CategoryService.getByType(CategoryType.GROUP);
+        const groupRes = await CategoryService.getByType(CategoryType.RELATIONSHIP);
         setGuestGroupOp(groupRes.map(i => {return {value: i.group_name, label: i.display_text}}));
 
         const attachRes = await CategoryService.getByType(CategoryType.ATTACH);
@@ -50,21 +54,53 @@ function GuestDetailModal(props) {
     }
 
     async function handleSave(values) {
+        setLoading(true);
         if (mode === "add") {
             await GuestListService.insertGuest(values);
+            onClose(true);
+            setLoading(false);
             messageApi.open({
                 type: 'success',
                 content: 'Thêm khách mời thành công',
             });
-            onClose(true);
         } else if (mode === "edit") {
-            const res = GuestListService.updateGuest(guestId, values);
+            await GuestListService.updateGuest(guestId, values);
+            onClose(true);
+            setLoading(false);
             messageApi.open({
                 type: 'success',
                 content: 'Cập nhật khách mời thành công',
             });
-            onClose(true);
         }
+    }
+
+    async function copyPhone() {
+        if (!form.getFieldValue('phone')) {
+            messageApi.open({
+                type: 'warning',
+                content: 'Chưa nhập số điện thoại',
+            });
+            return;
+        }
+        await navigator.clipboard.writeText(form.getFieldValue('phone'));
+        messageApi.open({
+            type: 'success',
+            content: 'Đã copy số điện thoại',
+        });
+    }
+    function openLink() {
+        if (!form.getFieldValue('messenger_link')) {
+            messageApi.open({
+                type: 'warning',
+                content: 'Chưa nhập link',
+            });
+            return;
+        }
+        window.open(
+            form.getFieldValue('messenger_link'),
+            "_blank",
+            "noopener,noreferrer"
+        );
     }
 
     return (
@@ -75,7 +111,7 @@ function GuestDetailModal(props) {
                 closable={{ placement: 'end' }}
                 open={visible}
                 onClose={onClose}
-                size={800}
+                size={700}
             >
                 <Spin spinning={loading}>
                     <Form form={form} layout="vertical" onFinish={handleSave}>
@@ -84,7 +120,7 @@ function GuestDetailModal(props) {
                         </Form.Item>
                         <div className="form-row">
                             <Form.Item name="attachment_invite" label="Mời cùng" className="form-item">
-                                <Select 
+                                <Select allowClear
                                     options={attachOp}
                                 />
                             </Form.Item>
@@ -104,22 +140,32 @@ function GuestDetailModal(props) {
                                 <Input placeholder="Viettelpay" className="form-item-input" allowClear/>
                             </Form.Item>
                         </div>
-                        <Space size={24}>
-                            <Form.Item name="phone" label="Số điện thoại">
-                                <Input placeholder="09..." type="number" allowClear/>
+                        <div className="form-row">
+                            <Form.Item name="phone" label="Số điện thoại" className="form-item">
+                                <Space.Compact>
+                                    <Input placeholder="09..." type="number" allowClear/>
+                                    <Tooltip title="Copy SĐT">
+                                        <Button type="default" icon={<CopyOutlined />} onClick={copyPhone}></Button>
+                                    </Tooltip>
+                                </Space.Compact>
                             </Form.Item>
-                            <Form.Item name="messenger_link" label="Facebook/Messenger">
-                                <Input placeholder="https://..." allowClear/>
+                            <Form.Item name="messenger_link" label="Facebook/Messenger" className="form-item">
+                                <Space.Compact>
+                                    <Input placeholder="https://..." allowClear/>
+                                    <Tooltip title="Mở link">
+                                        <Button type="default" icon={<FacebookOutlined />} onClick={openLink}></Button>
+                                    </Tooltip>
+                                </Space.Compact>
                             </Form.Item>
-                        </Space>
-                        <Space size={24}>
-                            <Form.Item name="total_invite" label="Số người dự kiến">
+                        </div>
+                        <div className="form-row">
+                            <Form.Item name="total_invite" label="Số người dự kiến" className="form-item">
                                 <Input placeholder="1" type="number" />
                             </Form.Item>
-                            <Form.Item name="note" label="Ghi chú">
+                            <Form.Item name="note" label="Ghi chú" className="form-item">
                                 <Input placeholder="Thêm ghi chú" allowClear/>
                             </Form.Item>
-                        </Space>
+                        </div>
                     </Form>
                     <div className="form-row">
                         <Button type="primary" onClick={() => form.submit()} className="form-btn-row">Save</Button>

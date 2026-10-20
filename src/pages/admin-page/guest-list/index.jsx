@@ -12,9 +12,13 @@ function GuestList() {
     const [searchName, setSearchName] = useState(null);
     const [overviewData, setOverviewData] = useState({});
     const [guestData, setGuestData] = useState({});
+    
+    const [mode, setMode] = useState("add");
+    const [guestEdit, setGuestEdit] = useState(null);
     const [searchInfo, setSearchInfo] = useState({
         name: null,
         relationship: 0,
+        isInvite: -1,
         pageSize: 10,
         pageIndex: 1,
     });
@@ -24,8 +28,11 @@ function GuestList() {
         { value: 0, label: 'Tất cả' },
         { value: 2, label: 'Nhà gái' },
         { value: 1, label: 'Nhà trai' },
-        { value: 3, label: 'Chưa gửi' },
-        { value: 4, label: 'Đã gửi' },
+    ];
+    const statusFilterOp = [
+        { value: -1, label: 'Tất cả' },
+        { value: 0, label: 'Chưa gửi' },
+        { value: 1, label: 'Đã gửi' },
     ];
 
     useEffect(() => {
@@ -34,9 +41,9 @@ function GuestList() {
 
     async function reload() {
         setLoading(true);
-        console.log("searchInfo",searchInfo);
-        
         const res = await GuestListService.searchGuests(searchInfo);
+        console.log("search guest",res);
+        setLoading(false);
         setGuestData({
             ...res,
             totalPage: Math.ceil(res.total_record/searchInfo.pageSize),
@@ -44,20 +51,25 @@ function GuestList() {
 
         const resOvv = await GuestListService.guestOverview();
         setOverviewData(resOvv);
-        setLoading(false);
     }
 
     function changeFilterMenu(activeKey) {
         setSearchInfo({
             ...searchInfo,
             pageIndex: 1,
-            relationship: activeKey > 2 ? 0 : activeKey,
-            isInvite: activeKey >= 3 && activeKey <= 4 ? activeKey - 3 : null,
+            relationship: activeKey,
+        });
+    }
+    function changeFilterStatus(activeKey) {
+        setSearchInfo({
+            ...searchInfo,
+            pageIndex: 1,
+            isInvite: activeKey,
         });
     }
 
     useEffect(() => {
-        const timer = setTimeout(async () => {
+        const timer = setTimeout(() => {
             setSearchInfo({
                 ...searchInfo,
                 pageIndex: 1,
@@ -140,21 +152,32 @@ function GuestList() {
                     <Input
                         placeholder="Tên khách mời"
                         allowClear
-                        size="small"
+                        size="middle"
                         className="me-2"
                         onChange={onSearch}
                     />
-                    <Button type="primary" icon={<PlusOutlined />} size="small"
+                    <Button type="primary" icon={<PlusOutlined />} size="middle"
                         onClick={() => {setOpenDetail(true)}}
                     >
                         Thêm khách
                     </Button>
+                </div>
+                <div className="menu-filter mt-2 mb-2">
+                    <Segmented
+                        options={statusFilterOp}
+                        onChange={changeFilterStatus}
+                    />
                 </div>
                 <div className="guest-list mt-3">
                     {guestData?.data?.map((g, ind) => (
                         <GuestInfo guestInfo={g} reload={reload}
                             key={ind}
                             messageApi={messageApi}
+                            editModal={() => {
+                                setMode("edit");
+                                setGuestEdit(g);
+                                setOpenDetail(true);
+                            }}
                         />
                     ))} 
                 </div>
@@ -171,8 +194,9 @@ function GuestList() {
 
         <GuestDetailModal
             visible={openDetail}
-            mode="add"
+            mode={mode}
             messageApi={messageApi}
+            guestId={guestEdit?.id}
             onClose={(isReload) => {
                 setOpenDetail(false);
                 if (isReload) reload();

@@ -1,5 +1,5 @@
 .admin-page {
-    background-color: rgba(255, 247, 222, 0.322);
+    background-color: rgba(255, 254, 245, 0.322);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,6 +10,7 @@
     width: 100%;
     padding: 10px 10px 0 10px;
     max-width: 800px;
+    margin-bottom: 8px;
 }
 
 .admin-page .page-content {
@@ -26,4 +27,25 @@
 }
 .tab-item .tab-name {
     font-size: 12px;
+}
+
+
+.page-content .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-content .pagination .pagi-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-content .pagination .page-ind {
+    font-size: 12px;
+}
+.page-content .pagination .total-rec {
+    font-size: 9px;
 }

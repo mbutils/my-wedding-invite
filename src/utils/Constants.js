@@ -16,8 +16,9 @@ export const GuestOf = {
 }
 
 export const CategoryType = {
-    GROUP: 'GROUP',
+    RELATIONSHIP: 'RELATIONSHIP',
     ATTACH: 'ATTACH',
     EXPENSE: 'EXPENSE',
+    EXPENSE_STATE: 'EXPENSE_STATE',
 }
 

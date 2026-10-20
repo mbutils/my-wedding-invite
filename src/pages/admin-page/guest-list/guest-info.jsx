@@ -1,13 +1,10 @@
-import { CheckOutlined, DeleteOutlined, EditOutlined, ExclamationCircleTwoTone, LinkOutlined, MailOutlined, SafetyCertificateTwoTone, SendOutlined, TeamOutlined } from "@ant-design/icons";
+import { CheckOutlined, DeleteOutlined, EditOutlined, ExclamationCircleTwoTone, FacebookFilled, FacebookOutlined, LinkOutlined, MailOutlined, PhoneOutlined, PhoneTwoTone, SafetyCertificateTwoTone, TeamOutlined } from "@ant-design/icons";
 import "../../../styles/pages/admin-page/guest-info.css";
 import { Button, Tag, Tooltip } from "antd";
-import GuestDetailModal from "./guest-detail-modal";
-import { useState } from "react";
 import GuestListService from "../../../services/guestListService";
 
 function GuestInfo(props) {
-    const { guestInfo, reload, messageApi } = props;
-    const [openDetail, setOpenDetail] = useState(false);
+    const { guestInfo, reload, editModal } = props;
 
     async function updateInvited() {
         const toggeleInvite = !guestInfo.is_invite ? 1 : 0;
@@ -18,7 +15,7 @@ function GuestInfo(props) {
     return (
         <div className="guest-info-container">
             <div className="content-left">
-                <Button icon={<LinkOutlined />} size="small" className="mb-1" >
+                <Button icon={<LinkOutlined />} size="small" className="mb-2" >
                     Thiệp ĐT
                 </Button>
                 <Button icon={!guestInfo.is_invite ? <MailOutlined />: <CheckOutlined />} size="small" onClick={updateInvited}
@@ -27,11 +24,14 @@ function GuestInfo(props) {
                     {guestInfo.is_invite ? "Đã mời" : "Phát thiệp"}
                 </Button>
             </div>
-            <div className="content-center">
-                <div className="name mb-1">{guestInfo.name}
-                    {guestInfo.attachment_invite
-                    ? (<span> và {guestInfo.attachment_invite_txt}</span>)
-                    : null}
+            <div className="content-center" onClick={editModal}>
+                <div className="name mb-2">
+                    <span className="name-guest">
+                        {guestInfo.name}
+                        {guestInfo.attachment_invite
+                        ? (<span className="name-attach"> và {guestInfo.attachment_invite_txt}</span>)
+                        : null}
+                    </span>
 
                     {/* icon đã phản hồi */}
                     {guestInfo.is_attend
@@ -60,20 +60,13 @@ function GuestInfo(props) {
                 </div>
             </div>
             <div className="content-right">
-                <EditOutlined className="mb-3" onClick={() => setOpenDetail(true)}/>
-                <DeleteOutlined/>
+                <a href={guestInfo.messenger_link} aria-disabled={!guestInfo.messenger_link} target="_blank">
+                    <FacebookFilled className="mb-2" style={{color: guestInfo.messenger_link ? '#1877F2' : "#a8a8a8"}}/>
+                </a>
+                <a href={guestInfo.phone ? `tel:${guestInfo.phone}` : null} aria-disabled={!guestInfo.phone}>
+                    <PhoneTwoTone twoToneColor={guestInfo.phone ? "#57b925" : "#a8a8a8"} />
+                </a>
             </div>
-
-            <GuestDetailModal
-                visible={openDetail}
-                mode="edit"
-                messageApi={messageApi}
-                guestId={guestInfo.id}
-                onClose={(isReload) => {
-                    setOpenDetail(false);
-                    if (isReload) reload();
-                }}
-            />
         </div>
     )
 }
